@@ -488,7 +488,7 @@ button.ghost,
   font-family: "Cormorant Garamond", serif;
   font-size: 3.15rem;
   line-height: 0.98;
-  color: #2d7dff !important;
+  color: var(--text);
 }
 
 .detail-code {
@@ -614,7 +614,7 @@ button.ghost,
   font-family: "Cormorant Garamond", serif;
   font-size: 2.7rem;
   line-height: 1;
-  color: var(--text);
+  color: #2d7dff;
 }
 
 .score-blurb,
