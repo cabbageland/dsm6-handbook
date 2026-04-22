@@ -123,8 +123,9 @@ const allItems = flattenItems();
 
 function renderToc() {
   const anchors = [
+    { id: 'top', label: 'Title Page' },
     { id: 'founding-credit', label: 'Founding Credit' },
-    { id: 'disorders', label: 'Disorders' },
+    { id: 'library-anchor', label: 'Diagnostic Library' },
     { id: 'appendices', label: 'Appendices' }
   ];
   toc.innerHTML = anchors.map(anchor => `<a href="#${anchor.id}">${anchor.label}</a>`).join('');
@@ -157,7 +158,7 @@ function renderList() {
     <button class="disorder-item ${activeItem?.code === item.code ? 'active' : ''}" data-code="${item.code}">
       <h4>${item.name}</h4>
       <p>${item.summary}</p>
-      <div class="disorder-meta"><span>${item.section}</span><span>${item.code}</span></div>
+      <div class="disorder-meta"><span>${item.short}</span><span>${item.code}</span></div>
     </button>
   `).join('');
 

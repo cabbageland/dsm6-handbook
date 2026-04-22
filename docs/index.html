@@ -27,77 +27,105 @@
         <input id="search" type="text" placeholder="Search disorders, vibes, dread..." />
       </div>
 
+      <div class="panel nav-panel">
+        <div class="section-kicker">Jump through the handbook</div>
+        <nav class="toc" id="toc"></nav>
+      </div>
+
       <div class="panel stat-panel">
         <div class="stat"><span>Disorders</span><strong>48</strong></div>
         <div class="stat"><span>Word count</span><strong>5.2k</strong></div>
         <div class="stat"><span>Scientific legitimacy</span><strong>0%</strong></div>
       </div>
-
-      <nav class="toc" id="toc"></nav>
     </div>
   </aside>
 
   <main class="main">
-    <section class="hero card">
-      <div class="hero-copy">
-        <div class="eyebrow">A fake clinical handbook for exquisitely modern suffering</div>
-        <div class="hero-title-lockup">
+    <section class="hero card" id="top">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">A fake clinical handbook for exquisitely modern suffering</div>
           <div class="hero-mini">DSM-6</div>
           <h2>Extremely Contemporary Disorders</h2>
+          <p class="lede">A satirical field guide to platform-induced breakdowns, vibe injuries, administrative dread, and the tiny humiliations of trying to remain a person inside systems clearly designed by lunatics.</p>
+          <div class="hero-actions">
+            <button class="primary" data-jump="library-anchor">Open diagnostic library</button>
+            <button class="secondary" data-jump="founding-credit">Founding credit</button>
+          </div>
         </div>
-        <p class="lede">A satirical field guide to vibe injuries, platform-induced breakdowns, administrative dread, and the small humiliations of trying to remain a person inside systems clearly designed by lunatics.</p>
-      </div>
-      <div class="hero-actions">
-        <button class="primary" data-jump="founding-credit">Founding credit</button>
-        <button class="secondary" data-jump="disorders">Browse disorders</button>
-        <button class="secondary" data-jump="appendices">Appendices</button>
+        <div class="hero-side cardette">
+          <div class="section-kicker">Quick orientation</div>
+          <ul class="hero-list">
+            <li>48 fake disorders</li>
+            <li>Interactive diagnostic browser</li>
+            <li>Appendices and treatment notes</li>
+            <li>Absolutely not billable to insurance</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="card intro-grid">
-      <article>
-        <div class="section-kicker" id="founding-credit">Founding Clinical Credit</div>
+    <section class="section-band section-band-split">
+      <article class="card founder-card" id="founding-credit">
+        <div class="section-kicker">Founding Clinical Credit</div>
+        <h3>Origin story</h3>
         <p>This handbook would not exist without <strong>Chris A.</strong>, whose cursedly strong idea was, in essence, “what if we asked cabbageclaw to write the new DSM-6,” thereby committing the rest of us to an irresponsible but frankly necessary act of diagnostic worldbuilding.</p>
         <p>The editors wish to formally thank Chris A. for the originating spark, the unlawful level of conceptual confidence, and the contribution of one of the few ideas in recent memory that managed to be simultaneously stupid, excellent, and immediately productive.</p>
         <p>In a more just society, this kind of contribution would qualify a person for either tenure or supervised observation.</p>
       </article>
-      <article>
+
+      <article class="card disclaimer-card">
         <div class="section-kicker">Clinical disclaimer</div>
+        <h3>Not a real manual</h3>
         <p>This is satire. It is not medical advice, diagnosis, treatment, or a real psychiatric text.</p>
         <p>Use irresponsibly, affectionately, and never in court.</p>
       </article>
     </section>
 
     <section class="card manifesto">
-      <div class="section-kicker">Preface to the Sixth Edition</div>
+      <div class="manifesto-top">
+        <div>
+          <div class="section-kicker">Preface to the Sixth Edition</div>
+          <h3>A note on modern suffering</h3>
+        </div>
+        <button class="ghost" data-jump="appendices">Skip to appendices</button>
+      </div>
       <p>The human organism remains poorly matched to a civilization composed of notifications, logistics, passwords, fluorescent lighting, synthetic urgency, and the expectation of constant tonal precision in written communication.</p>
       <p>This manual names contemporary forms of distress so specific, absurd, and widely shared that refusing to describe them would be clinically unserious.</p>
       <blockquote>Recognition is the first mercy. Comedy is the second.</blockquote>
     </section>
 
-    <section class="card disorders-shell" id="disorders">
+    <section class="card disorders-shell" id="library-anchor">
       <div class="shell-header">
         <div>
-          <div class="section-kicker">Diagnostic Library</div>
+          <div class="section-kicker">Diagnostic library</div>
           <h3>Browse the disorders</h3>
-          <p class="shell-subtitle">Bigger cards, faster scanning, less tiny little suffering.</p>
+          <p class="shell-subtitle">Denser cards, better scanning, richer detail, less dead air.</p>
         </div>
         <div class="chip-row" id="filterChips"></div>
       </div>
-      <div class="layout">
-        <div class="disorder-list" id="disorderList"></div>
+      <div class="library-layout">
+        <div class="library-column">
+          <div class="disorder-list" id="disorderList"></div>
+        </div>
         <article class="detail-card" id="detailCard">
           <div class="detail-placeholder">
             <div class="placeholder-mark">⚕</div>
             <h4>Select a disorder</h4>
-            <p>Choose an entry to reveal the full fake clinical description, associated features, and weak but sincere treatment guidance.</p>
+            <p>Choose an entry to reveal its full fake clinical profile, diagnostic features, and weak but sincere treatment guidance.</p>
           </div>
         </article>
       </div>
     </section>
 
     <section class="card appendices" id="appendices">
-      <div class="section-kicker">Appendices</div>
+      <div class="appendices-top">
+        <div>
+          <div class="section-kicker">Appendices</div>
+          <h3>Clinical extras</h3>
+        </div>
+        <button class="ghost" data-jump="top">Back to top</button>
+      </div>
       <div class="appendix-grid">
         <article>
           <h4>Clinical intake questions</h4>
