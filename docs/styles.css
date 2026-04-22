@@ -539,6 +539,106 @@ button.ghost,
   margin: 0;
 }
 
+.scorecard-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.symptom-picker {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-height: 72vh;
+  overflow: auto;
+  padding-right: 8px;
+}
+
+.symptom-chip {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.8);
+  border-radius: 18px;
+  padding: 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+}
+
+.symptom-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+}
+
+.symptom-chip.selected {
+  background: linear-gradient(135deg, rgba(111,87,255,0.12), rgba(234,91,189,0.1));
+  border-color: rgba(111,87,255,0.26);
+}
+
+.symptom-chip strong {
+  display: block;
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.symptom-chip span {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.score-result {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,245,255,0.92));
+  border-radius: 26px;
+  padding: 28px;
+  position: sticky;
+  top: 28px;
+}
+
+.score-reading {
+  display: grid;
+  gap: 18px;
+}
+
+.score-kicker {
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+}
+
+.score-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.7rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+.score-blurb,
+.score-reading li,
+.score-reading p {
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.score-pill-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.score-pill {
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(111,87,255,0.1);
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
 .appendix-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -578,13 +678,19 @@ button.ghost,
   }
   .hero-grid,
   .section-band-split,
-  .appendix-grid {
+  .appendix-grid,
+  .scorecard-layout {
     grid-template-columns: 1fr;
+  }
+  .score-result {
+    position: relative;
+    top: 0;
   }
 }
 
 @media (max-width: 860px) {
-  .disorder-list {
+  .disorder-list,
+  .symptom-picker {
     grid-template-columns: 1fr;
   }
 }

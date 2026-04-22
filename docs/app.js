@@ -111,9 +111,13 @@ const detail = document.getElementById('detailCard');
 const chipRow = document.getElementById('filterChips');
 const search = document.getElementById('search');
 const jumpButtons = document.querySelectorAll('[data-jump]');
+const symptomPicker = document.getElementById('symptomPicker');
+const scoreResult = document.getElementById('scoreResult');
+const resetScorecard = document.getElementById('resetScorecard');
 
 let activeSection = 'all';
 let activeItem = null;
+let selectedSymptoms = [];
 
 function flattenItems() {
   return sections.flatMap(section => section.items.map(item => ({ ...item, section: section.title, sectionId: section.id, short: section.short })));
@@ -126,6 +130,7 @@ function renderToc() {
     { id: 'top', label: 'Title Page' },
     { id: 'founding-credit', label: 'Founding Credit' },
     { id: 'library-anchor', label: 'Diagnostic Library' },
+    { id: 'scorecard', label: 'Scoring Sheet' },
     { id: 'appendices', label: 'Appendices' }
   ];
   toc.innerHTML = anchors.map(anchor => `<a href="#${anchor.id}">${anchor.label}</a>`).join('');
@@ -208,7 +213,103 @@ function renderDetail(item) {
   `;
 }
 
+function renderScorecard() {
+  if (!symptomPicker || !scoreResult) return;
+
+  symptomPicker.innerHTML = allItems.map(item => {
+    const selected = selectedSymptoms.includes(item.code);
+    return `
+      <button class="symptom-chip ${selected ? 'selected' : ''}" data-symptom="${item.code}">
+        <strong>${item.name}</strong>
+        <span>${item.summary}</span>
+      </button>
+    `;
+  }).join('');
+
+  symptomPicker.querySelectorAll('[data-symptom]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const code = btn.dataset.symptom;
+      if (selectedSymptoms.includes(code)) {
+        selectedSymptoms = selectedSymptoms.filter(x => x !== code);
+      } else if (selectedSymptoms.length < 8) {
+        selectedSymptoms = [...selectedSymptoms, code];
+      }
+      renderScorecard();
+    });
+  });
+
+  if (selectedSymptoms.length !== 8) {
+    scoreResult.innerHTML = `
+      <div class="detail-placeholder">
+        <div class="placeholder-mark">✶</div>
+        <h4>${selectedSymptoms.length}/8 selected</h4>
+        <p>Select exactly 8 symptoms to generate your fake clinical reading.</p>
+      </div>`;
+    return;
+  }
+
+  const chosen = selectedSymptoms.map(code => allItems.find(item => item.code === code)).filter(Boolean);
+  const sectionCounts = chosen.reduce((acc, item) => {
+    acc[item.section] = (acc[item.section] || 0) + 1;
+    return acc;
+  }, {});
+  const topSection = Object.entries(sectionCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'Generalized Contemporary Distress';
+
+  const resultBank = [
+    {
+      title: 'Acute Contemporary Overextension',
+      blurb: 'Your profile suggests a high-functioning but aesthetically frayed relationship to modern life. You are not failing, but you are clearly being drop-kicked by interfaces.',
+      style: 'Primary pattern: overcivilized psychic wear with intermittent administrative collapse.'
+    },
+    {
+      title: 'Diffuse Systems-Induced Spiritual Fatigue',
+      blurb: 'Your symptom pattern indicates a nervous system that has been asked to do too many tiny undignified things for too long.',
+      style: 'Primary pattern: elegant person, hostile conditions.'
+    },
+    {
+      title: 'Chronic Vibe-Administrative Comorbidity',
+      blurb: 'Your selections reveal a rare but increasingly common blend of aesthetic exhaustion, logistical dread, and communication drag.',
+      style: 'Primary pattern: discernment trapped inside paperwork and tabs.'
+    }
+  ];
+
+  const result = resultBank[chosen.length % resultBank.length];
+  const funniest = chosen.slice(0, 3).map(item => item.name);
+
+  scoreResult.innerHTML = `
+    <div class="score-reading">
+      <div>
+        <div class="score-kicker">Completely fake diagnostic reading</div>
+        <div class="score-title">${result.title}</div>
+      </div>
+      <p class="score-blurb">${result.blurb}</p>
+      <div class="score-pill-row">
+        <span class="score-pill">Top cluster: ${topSection}</span>
+        <span class="score-pill">Severity: theatrically moderate</span>
+        <span class="score-pill">Prognosis: snack-responsive</span>
+      </div>
+      <div>
+        <h5>Most incriminating selections</h5>
+        <ul>${funniest.map(name => `<li>${name}</li>`).join('')}</ul>
+      </div>
+      <div>
+        <h5>Clinical interpretation</h5>
+        <p>${result.style}</p>
+        <p>Secondary findings suggest a person of high sensitivity, decent taste, and insufficient insulation from modern nonsense.</p>
+      </div>
+      <div>
+        <h5>Recommended treatment plan</h5>
+        <p>One walk, one glass of water, one honest text, fewer tabs, and a temporary refusal to optimize your soul.</p>
+      </div>
+    </div>`;
+}
+
 search.addEventListener('input', renderList);
+
+resetScorecard?.addEventListener('click', () => {
+  selectedSymptoms = [];
+  renderScorecard();
+});
 
 jumpButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -222,3 +323,4 @@ renderList();
 activeItem = allItems[0];
 renderList();
 renderDetail(activeItem);
+renderScorecard();
