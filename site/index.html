@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSM-6 Handbook, Extremely Contemporary Disorders Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="noise"></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="brand">
+        <div class="brand-kicker">Totally Unauthorized Edition</div>
+        <h1>DSM-6</h1>
+        <p>Extremely Contemporary Disorders Edition</p>
+      </div>
+
+      <div class="panel quick-panel">
+        <label for="search">Clinical search</label>
+        <input id="search" type="text" placeholder="Search disorders, vibes, dread..." />
+      </div>
+
+      <div class="panel stat-panel">
+        <div class="stat"><span>Disorders</span><strong>48</strong></div>
+        <div class="stat"><span>Word count</span><strong>5.2k</strong></div>
+        <div class="stat"><span>Scientific legitimacy</span><strong>0%</strong></div>
+      </div>
+
+      <nav class="toc" id="toc"></nav>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="hero card">
+      <div class="eyebrow">Being a wholly fake but emotionally plausible manual</div>
+      <h2>Psychiatry for the browser-tab era</h2>
+      <p class="lede">A satirical handbook of platform-induced disturbances, vibe injuries, administrative afflictions, and other exquisitely modern psychic abrasions.</p>
+      <div class="hero-actions">
+        <button class="primary" data-jump="founding-credit">Founding credit</button>
+        <button class="secondary" data-jump="disorders">Browse disorders</button>
+        <button class="secondary" data-jump="appendices">Appendices</button>
+      </div>
+    </section>
+
+    <section class="card intro-grid">
+      <article>
+        <div class="section-kicker" id="founding-credit">Founding Clinical Credit</div>
+        <p>This handbook would not exist without <strong>Chris A.</strong>, whose cursedly strong idea was, in essence, “what if we asked cabbageclaw to write the new DSM-6,” thereby committing the rest of us to an irresponsible but frankly necessary act of diagnostic worldbuilding.</p>
+        <p>The editors wish to formally thank Chris A. for the originating spark, the unlawful level of conceptual confidence, and the contribution of one of the few ideas in recent memory that managed to be simultaneously stupid, excellent, and immediately productive.</p>
+        <p>In a more just society, this kind of contribution would qualify a person for either tenure or supervised observation.</p>
+      </article>
+      <article>
+        <div class="section-kicker">Clinical disclaimer</div>
+        <p>This is satire. It is not medical advice, diagnosis, treatment, or a real psychiatric text.</p>
+        <p>Use irresponsibly, affectionately, and never in court.</p>
+      </article>
+    </section>
+
+    <section class="card manifesto">
+      <div class="section-kicker">Preface to the Sixth Edition</div>
+      <p>The human organism remains poorly matched to a civilization composed of notifications, logistics, passwords, fluorescent lighting, synthetic urgency, and the expectation of constant tonal precision in written communication.</p>
+      <p>This manual names contemporary forms of distress so specific, absurd, and widely shared that refusing to describe them would be clinically unserious.</p>
+      <blockquote>Recognition is the first mercy. Comedy is the second.</blockquote>
+    </section>
+
+    <section class="card disorders-shell" id="disorders">
+      <div class="shell-header">
+        <div>
+          <div class="section-kicker">Diagnostic Index</div>
+          <h3>Browse the disorders</h3>
+        </div>
+        <div class="chip-row" id="filterChips"></div>
+      </div>
+      <div class="layout">
+        <div class="disorder-list" id="disorderList"></div>
+        <article class="detail-card" id="detailCard">
+          <div class="detail-placeholder">
+            <div class="placeholder-mark">⚕</div>
+            <h4>Select a disorder</h4>
+            <p>Choose an entry to reveal the full fake clinical description, associated features, and weak but sincere treatment guidance.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card appendices" id="appendices">
+      <div class="section-kicker">Appendices</div>
+      <div class="appendix-grid">
+        <article>
+          <h4>Clinical intake questions</h4>
+          <ul>
+            <li>How many tabs are open right now, and be honest.</li>
+            <li>At what battery percentage does your personality change?</li>
+            <li>Do you currently owe anyone a text that has become symbolically overcharged?</li>
+            <li>Is today’s problem existential, administrative, or glucose-related?</li>
+          </ul>
+        </article>
+        <article>
+          <h4>Differential diagnosis</h4>
+          <ul>
+            <li><strong>CTPD</strong> concerns accumulating tabs. <strong>TRA</strong> concerns forgetting why one exists.</li>
+            <li><strong>ASF</strong> is aesthetic-performance exhaustion. <strong>WISF</strong> is wellness-overload exhaustion.</li>
+            <li><strong>CAAD</strong> is ambient bureaucratic dread. <strong>IRA</strong> is one undead thread returning for tribute.</li>
+          </ul>
+        </article>
+        <article>
+          <h4>General treatment principles</h4>
+          <ul>
+            <li>Hydrate before theorizing.</li>
+            <li>Eat before escalating.</li>
+            <li>Reduce exposure to app-designed psychic warfare.</li>
+            <li>Do the next small real thing instead of constructing a philosophy of delay.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
