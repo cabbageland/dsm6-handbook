@@ -115,6 +115,33 @@ const symptomPicker = document.getElementById('symptomPicker');
 const scoreResult = document.getElementById('scoreResult');
 const resetScorecard = document.getElementById('resetScorecard');
 
+const archetypes = [
+  { title: 'Acute Contemporary Overextension', blurb: 'You are not broken, but you are overtasked, over-signaled, and lightly cooked by too many systems at once.', style: 'You keep trying to behave like a high-capacity machine even though your spirit is clearly asking for a lower-input operating environment.' },
+  { title: 'Diffuse Systems-Induced Spiritual Fatigue', blurb: 'Your profile suggests a basically thoughtful person who has been forced into too many tiny undignified interactions with infrastructure.', style: 'This is less a character flaw than a prolonged exposure injury, though you are also not helping by opening new tabs mid-collapse.' },
+  { title: 'Chronic Vibe-Administrative Comorbidity', blurb: 'You are attempting to preserve discernment and personality while being nibbled to death by logistics.', style: 'Your nervous system is doing unpaid labor for every app, form, reminder, and little bureaucratic insult in your vicinity.' },
+  { title: 'Executive Function Ornamentalism', blurb: 'You have developed attractive rituals around functionality without always achieving the function itself.', style: 'In plain terms, the system is gorgeous, the vibe is compelling, and the task remains tragically undone.' },
+  { title: 'High Sensitivity, Low Buffer Syndrome', blurb: 'You notice too much, feel too much, and still try to act like this is a normal amount to metabolize.', style: 'The issue is not weakness. The issue is that your inputs are unreasonably loud and your recovery windows are too small.' },
+  { title: 'Ceremonial Avoidance Patterning', blurb: 'You are not simply procrastinating. You are building a cathedral around not doing one specific thing.', style: 'At some point this stopped being delay and became production design.' },
+  { title: 'Administrative Haunting with Preserved Insight', blurb: 'You remain painfully aware of every loose end and therefore never fully rest, which is terrible but at least intellectually consistent.', style: 'Congratulations on your insight. Unfortunately it has not cured the portals.' },
+  { title: 'Social Tenderness Under Communication Drag', blurb: 'You care sincerely about people, but the mechanics of modern communication keep turning care into psychic cement.', style: 'This is what happens when a decent heart collides with infinite message threads and the tyranny of tone management.' },
+  { title: 'Aesthetic Exhaustion with Residual Standards', blurb: 'You are tired, but crucially still opinionated, which keeps the whole thing both elegant and difficult.', style: 'You refuse to collapse in an ugly way, which is admirable but operationally annoying.' },
+  { title: 'Platform-Shaped Attention Erosion', blurb: 'Your attention has been sanded down by systems optimized to harvest it in crumbs.', style: 'You keep blaming yourself for fragmentation that was, frankly, professionally engineered into the room.' },
+  { title: 'Mildly Feral Competence Burn', blurb: 'You are still getting things done, but with a growing undertone of creaturely resentment.', style: 'Function persists, but civilization has lost your full endorsement.' },
+  { title: 'Optimized Exterior, Smoldering Interior', blurb: 'Your profile indicates external coherence paired with internal muttering and a deep aversion to further improvement discourse.', style: 'You can absolutely perform togetherness. The problem is that you are spiritually rolling your eyes the entire time.' },
+  { title: 'Chronically Interrupted Personhood', blurb: 'You are trying to think, feel, and act like a full human being inside interruption architecture.', style: 'Your personality keeps getting chopped into notification-sized portions.' },
+  { title: 'Tab-Backed Identity Stabilization', blurb: 'A meaningful fraction of your hope is currently stored in open browser tabs and saved links.', style: 'This is not archival behavior. This is emotional warehousing with Wi‑Fi.' },
+  { title: 'Hyperaware Calendar Delusion', blurb: 'You know time is limited and still continue to schedule as if your body were fictional.', style: 'This is a bold but unsupported theory of adulthood.' },
+  { title: 'Tender Perfectionist Message Rot', blurb: 'You want to be clear, warm, and precise, which would be noble if it were not also ruining your reply times.', style: 'You are essentially holding small diplomatic summits before sending “sounds good.”' },
+  { title: 'Low-Grade Panic, High-Grade Taste', blurb: 'Your life contains too much friction for peace, but your standards remain inconveniently intact.', style: 'This gives the whole condition an unfortunate elegance.' },
+  { title: 'Digitally Mediated Frazzle State', blurb: 'You are overstimulated in a way that is modern, boring, and weirdly difficult to explain to people who love productivity podcasts.', style: 'Your problem is not laziness. Your problem is that your mind is living in thirty browser events at once.' },
+  { title: 'Chronic Ambient Overmanagement', blurb: 'You are being managed by calendars, reminders, devices, forms, and invisible obligations to a degree that would alarm a healthier civilization.', style: 'At this point your day is less lived than negotiated.' },
+  { title: 'Graceful Collapse Deferral', blurb: 'You keep postponing the moment where you admit you are cooked, mostly because you would prefer to do so attractively.', style: 'This is emotionally sophisticated, aesthetically coherent, and extremely inefficient.' },
+  { title: 'Intermittent Hope Storage Disorder', blurb: 'You keep tiny reserves of future optimism in documents, products, saved routines, and plans for a better version of the week.', style: 'The hope itself is touching. The storage medium is a little humiliating.' },
+  { title: 'Civilized Person, Feral Nervous System', blurb: 'On paper you appear functional. In practice your internal weather has stopped respecting policy.', style: 'The exterior remains articulate while the interior has become a flashlight under a blanket.' },
+  { title: 'Main-Character Logistics Fatigue', blurb: 'You are carrying yourself like a protagonist while being repeatedly humbled by passwords, errands, tabs, chargers, and forms.', style: 'The plot is not defeating you. Admin is.' },
+  { title: 'Soft-Hearted Doom Efficiency', blurb: 'You have become disturbingly efficient at operating while somewhat fried, which is both impressive and a little bleak.', style: 'You are adapting beautifully to conditions that do not deserve your adaptation.' }
+];
+
 let activeSection = 'all';
 let activeItem = null;
 let selectedSymptoms = [];
@@ -255,25 +282,8 @@ function renderScorecard() {
   }, {});
   const topSection = Object.entries(sectionCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'Generalized Contemporary Distress';
 
-  const resultBank = [
-    {
-      title: 'Acute Contemporary Overextension',
-      blurb: 'Your profile suggests a high-functioning but aesthetically frayed relationship to modern life. You are not failing, but you are clearly being drop-kicked by interfaces.',
-      style: 'Primary pattern: overcivilized psychic wear with intermittent administrative collapse.'
-    },
-    {
-      title: 'Diffuse Systems-Induced Spiritual Fatigue',
-      blurb: 'Your symptom pattern indicates a nervous system that has been asked to do too many tiny undignified things for too long.',
-      style: 'Primary pattern: elegant person, hostile conditions.'
-    },
-    {
-      title: 'Chronic Vibe-Administrative Comorbidity',
-      blurb: 'Your selections reveal a rare but increasingly common blend of aesthetic exhaustion, logistical dread, and communication drag.',
-      style: 'Primary pattern: discernment trapped inside paperwork and tabs.'
-    }
-  ];
-
-  const result = resultBank[chosen.length % resultBank.length];
+  const scoreSeed = selectedSymptoms.join('').split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0) + topSection.length;
+  const result = archetypes[scoreSeed % archetypes.length];
   const funniest = chosen.slice(0, 3).map(item => item.name);
 
   scoreResult.innerHTML = `
