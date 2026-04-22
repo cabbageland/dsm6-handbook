@@ -290,7 +290,7 @@ function renderScorecard() {
     <div class="score-reading">
       <div>
         <div class="score-kicker">Completely fake diagnostic reading</div>
-        <div class="score-title">${result.title}</div>
+        <div class="score-title"><strong>${result.title}</strong></div>
       </div>
       <p class="score-blurb">${result.blurb}</p>
       <div class="score-pill-row">
