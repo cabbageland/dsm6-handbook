@@ -624,6 +624,10 @@ button.ghost,
   font-weight: 700;
 }
 
+.score-title strong {
+  font-weight: 700;
+}
+
 .score-blurb,
 .score-reading li,
 .score-reading p {
