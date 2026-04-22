@@ -382,6 +382,7 @@ button.ghost,
 .library-column {
   display: grid;
   gap: 18px;
+  min-height: 0;
 }
 
 .disorder-list {
@@ -389,6 +390,9 @@ button.ghost,
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-content: start;
+  max-height: 78vh;
+  overflow: auto;
+  padding-right: 8px;
 }
 
 .disorder-item {
