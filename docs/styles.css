@@ -400,7 +400,7 @@ button.ghost,
   display: grid;
   gap: 10px;
   align-content: start;
-  background: rgba(255,255,255,0.88);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,242,255,0.92));
 }
 
 .disorder-item:hover,
@@ -414,24 +414,35 @@ button.ghost,
 .disorder-item h4 {
   margin-bottom: 0;
   font-size: 1.18rem;
+  color: #261a4d;
 }
 
 .disorder-item p {
   margin: 0;
-  color: var(--muted);
+  color: #5f5487;
   font-size: 1.02rem;
   line-height: 1.58;
+  font-weight: 600;
 }
 
 .disorder-meta {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 4px;
-  font-size: 0.8rem;
-  color: var(--muted-2);
+  margin-top: 6px;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+}
+
+.disorder-meta span:first-child {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.disorder-meta span:last-child {
+  color: var(--accent);
+  font-weight: 800;
 }
 
 .detail-card {
@@ -480,9 +491,10 @@ button.ghost,
 
 .detail-summary {
   font-size: 1.22rem;
-  color: var(--text);
+  color: #4e4377;
   line-height: 1.68;
   margin-top: 12px;
+  font-weight: 600;
 }
 
 .detail-sections {
@@ -506,7 +518,7 @@ button.ghost,
 
 .detail-sections p,
 .detail-sections li {
-  color: var(--muted);
+  color: #5b517e;
   line-height: 1.78;
   font-size: 1.06rem;
 }
