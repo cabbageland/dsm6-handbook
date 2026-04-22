@@ -448,13 +448,14 @@ button.ghost,
 .detail-card {
   position: sticky;
   top: 28px;
-  min-height: 72vh;
+  height: fit-content;
+  min-height: 0;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,245,255,0.92));
 }
 
 .detail-placeholder {
-  min-height: 58vh;
+  min-height: 320px;
   display: grid;
   place-items: center;
   text-align: center;
@@ -553,6 +554,7 @@ button.ghost,
     position: relative;
     top: 0;
     min-height: auto;
+    height: auto;
   }
 }
 
