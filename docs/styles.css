@@ -578,7 +578,7 @@ button.ghost,
 
 .symptom-chip strong {
   display: block;
-  color: var(--text);
+  color: #2d7dff;
   font-size: 1rem;
   margin-bottom: 6px;
 }
