@@ -488,7 +488,7 @@ button.ghost,
   font-family: "Cormorant Garamond", serif;
   font-size: 3.15rem;
   line-height: 0.98;
-  color: #2d7dff;
+  color: #2d7dff !important;
 }
 
 .detail-code {
