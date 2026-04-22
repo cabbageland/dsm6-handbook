@@ -334,6 +334,10 @@ button.ghost,
 
 .founder-card h3 {
   color: #b7791f;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3rem;
+  line-height: 1.04;
+  font-weight: 600;
 }
 
 .disclaimer-card {
