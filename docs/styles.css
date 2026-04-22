@@ -535,6 +535,12 @@ button.ghost,
   font-size: 1.06rem;
 }
 
+.score-reading h5 {
+  font-size: 1.12rem;
+  margin: 0 0 10px;
+  color: var(--text);
+}
+
 .detail-sections ul {
   padding-left: 20px;
   margin: 0;
